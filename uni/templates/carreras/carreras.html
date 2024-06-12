@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carreras</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--color5);
+            color: var(--color1);
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        h2 {
+            text-align: center;
+            color: var(--color2);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid var(--color2);
+        }
+
+        th {
+            background-color: var(--color3);
+            color: #fff;
+            text-align: left;
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--color4);
+        }
+    </style>
+</head>
+<body>
+    {% extends 'base.html' %}
+    {% block content %}
+        <div class="container">
+            <h2>Carreras</h2>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Ciclos</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for carrera in carreras %}
+                        <tr>
+                            <td>{{carrera.nombre}}</td>
+                            <td>{{carrera.duracion}}</td>
+                            <td><a href="{% url 'nuevo_alumno' carrera.id %}">Inscribir Alumno</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endblock %}
+</body>
+</html>
